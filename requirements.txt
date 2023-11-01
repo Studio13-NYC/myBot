@@ -1,5 +1,6 @@
 llama-index
 pinecone-client
 chainlit
+
 span_marker
 
