@@ -29,7 +29,7 @@ name = "myBot"
 show_readme_as_default = true
 
 # Description of the app and chatbot. This is used for HTML tags.
-# description = "Your Friendly Interviewer who will create your inworld Knowledge"
+# description = "Your Friendly bot who knows about your content"
 
 # Large size content are by default collapsed for a cleaner ui
 default_collapse_content = true
