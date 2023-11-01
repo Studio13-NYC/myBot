@@ -64,12 +64,12 @@ async def factory():
         service_context=service_context,streaming=True,
         memory=memory,
         system_prompt= my_system_prompt_message_content, 
-        similarity_top_k=3,
+        similarity_top_k=4,
         filters=MetadataFilters(
             filters=[
                 ExactMatchFilter(
                     key="project", value="myBot",
-                    key = "version", value="0.0.1",
+                    key = "version", value="v0.0.1",
                     key = "other", value="username")
             ]) 
         )
