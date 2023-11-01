@@ -17,9 +17,9 @@ from llama_index.schema import Document
 
 
 #Set Version and Project Metadata Tags
-project_name="AugmentedStorytelling"
-data_version="v0.2"
-other_value="other_value-ununsed"
+project_name="myBot"
+data_version="v0.0.1"
+other_value="username"
 
 # Set up logging
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
@@ -39,8 +39,8 @@ vector_store = PineconeVectorStore(pinecone_index=pinecone_index)
 storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
 
-# Load your Obsidian vault
-documents = ObsidianReader("D:\ObsidianVault\inworld").load_data()
+# Load your Markdown documents
+documents = ObsidianReader("source_docs").load_data()
 index = VectorStoreIndex.from_documents(documents, storage_context=storage_context)
 document = Document()
 
@@ -63,20 +63,14 @@ metadata_extractor = MetadataExtractor(
 nodes = metadata_extractor.process_nodes(nodes)
 
 # Generate embeddings for each node
-with open("md_embedding_out.txt", "w") as file:
-    embed_model = OpenAIEmbedding()
-    for node in nodes:
-        node_embedding = embed_model.get_text_embedding(node.get_content(metadata_mode="all"))
-        node.embedding = node_embedding
-        node.metadata['project'] = project_name
-        node.metadata['version'] = data_version
-        node.metadata['other'] = other_value
-        # print("Metadata:", node.metadata())
-        # print("Content:", node.get_content())
-        # print("---------------\n")
-        # file.write(f"Metadata: {node.metadata()}\n")
-        # file.write(f"Content: {node.get_content()}\n")
-        # file.write("---------------\n")
+embed_model = OpenAIEmbedding()
+for node in nodes:
+    node_embedding = embed_model.get_text_embedding(node.get_content(metadata_mode="all"))
+    node.embedding = node_embedding
+    node.metadata['project'] = project_name
+    node.metadata['version'] = data_version
+    node.metadata['other'] = other_value
+
 
 # Load nodes into the vector store
 vector_store.add(nodes)

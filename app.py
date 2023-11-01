@@ -68,7 +68,9 @@ async def factory():
         filters=MetadataFilters(
             filters=[
                 ExactMatchFilter(
-                    key="project", value="AugmentedStorytelling")
+                    key="project", value="myBot",
+                    key = "version", value="0.0.1",
+                    key = "other", value="username")
             ]) 
         )
 

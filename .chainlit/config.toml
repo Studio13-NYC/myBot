@@ -23,7 +23,7 @@ multi_modal = true
 
 [UI]
 # Name of the app and chatbot.
-name = "inKnowBot"
+name = "myBot"
 
 # Show the readme while the conversation is empty.
 show_readme_as_default = true
