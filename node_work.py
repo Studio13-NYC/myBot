@@ -1,4 +1,4 @@
-#markdown_embeddings.py
+#markdown_embeddings.py  mdudoaunmgirhpfz
 import os
 import logging
 import sys
@@ -41,19 +41,24 @@ storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
 
 # Load your Markdown documents
-documents = ObsidianReader(r"D:\ObsidianVault\test").load_data()
-index = VectorStoreIndex.from_documents(documents, storage_context=storage_context)
 document = Document()
+
+documents = ObsidianReader(r"D:\ObsidianVault\test").load_data()
+
+#index = VectorStoreIndex.from_documents(documents, storage_context=storage_context)
 
 # Construct nodes from the document text - note that the Obsidian reader returns a list of documents
 nodes = [TextNode(text=document.text) for document in documents]
+
+
 # Initialize the language model and metadata extractor
 llm = OpenAI(model="gpt-4")
+
 metadata_extractor = MetadataExtractor(
     extractors=[
         TitleExtractor(nodes=5, llm=llm),
-        QuestionsAnsweredExtractor(questions=3, llm=llm),
-        SummaryExtractor(llm=llm),  
+        #QuestionsAnsweredExtractor(questions=3, llm=llm),
+        #SummaryExtractor(llm=llm),  
         EntityExtractor(),
         KeywordExtractor(llm=llm, keywords=5),
     ],
@@ -74,6 +79,6 @@ for node in nodes:
 
 
 # Load nodes into the vector store
-vector_store.add(nodes)
+#vector_store.add(nodes)
 
 

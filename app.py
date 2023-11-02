@@ -66,9 +66,9 @@ async def factory():
         similarity_top_k=4,
         filters=MetadataFilters(
             filters=[
-                ExactMatchFilter(key="project", value="myBot"),
+                ExactMatchFilter(key="project", value="nickBot"),
                 ExactMatchFilter(key="version", value="v0.0.1"),
-                ExactMatchFilter(key="other", value="username")
+                ExactMatchFilter(key="other", value="Studio13")
             ]) 
         )
 
