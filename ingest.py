@@ -43,7 +43,7 @@ graphsignal.configure(api_key='cc451d52547c1a0a01a2e9c33ff4c7c6', deployment='my
 cuda_available = torch.cuda.is_available()
 
 # These are user defined variables - they should be moved into .env or somehting
-DOC_PATH = r"D:\ObsidianVault\inworld"  # be sure to keep the r in front of the string to make it a raw string
+DOC_PATH = r"soucedocs"  # be sure to keep the r in front of the string to make it a raw string
 SPLITTER_CHUNK_SIZE = 1024
 SPLITTER_CHUNK_OVERLAP = 20
 NODE_CHUNK_SIZE = 200
